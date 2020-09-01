@@ -45,3 +45,12 @@ func TestSliceShareMemory(t *testing.T) {
 	t.Log(Q1, len(Q1), cap(Q1))
 	t.Log(Q2, len(Q2), cap(Q2))
 }
+
+func TestSliceComparing(t *testing.T) {
+	a := []int{1, 2, 3, 4}
+	b := []int{1, 2, 3, 4}
+
+	if a == b {
+		t.Log("equal")
+	}
+}
