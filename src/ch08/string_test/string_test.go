@@ -1,6 +1,8 @@
 package string_test
 
 import (
+	"strconv"
+	"strings"
 	"testing"
 	"unsafe"
 )
@@ -25,4 +27,31 @@ func TestString(t *testing.T) {
 	t.Log("rune size:", unsafe.Sizeof(c[0]))
 	t.Logf("中 unicode %x", c[0])
 	t.Logf("中 UTF8 %x", str)
+}
+
+func TestStringToRune(t *testing.T) {
+	s := "中华人民共和国"
+	for _, c := range s {
+		t.Logf("%[1]c %[1]d", c)
+	}
+}
+
+func TestStringFn(t *testing.T) {
+	s := "A,B,C"
+	sep := ","
+	// 拆分
+	parts := strings.Split(s, sep)
+	for key, val := range parts {
+		t.Log(key, val)
+	}
+	// 拼接
+	t.Log(strings.Join(parts, "-"))
+}
+
+func TestStringConv(t *testing.T) {
+	s := strconv.Itoa(10)
+	t.Log("str => " + s)
+	if sInt, error := strconv.Atoi("10"); error == nil {
+		t.Log(10 + sInt)
+	}
 }
