@@ -7,10 +7,12 @@ import (
 	"time"
 )
 
+// 返回多结果
 func returnMultiValues() (int, int) {
 	return rand.Intn(10), rand.Intn(20)
 }
 
+// 函数参数
 func timeSpent(inner func(op int) int) func(op int) int {
 	return func(n int) int {
 		start := time.Now()
